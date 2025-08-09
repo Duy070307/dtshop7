@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="vi">
 <head>
 <meta charset="utf-8"/>
@@ -27,7 +26,12 @@
 
     /* Cột tên dịch vụ */
     .service-table th:first-child,
-    .service-table td:first-child{ text-align:left; white-space:nowrap }
+    .service-table td:first-child {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: normal;
+}
 
     /* Cột giá 1/3/6/12 tháng */
     .service-table th:nth-child(2), .service-table td:nth-child(2),
@@ -47,6 +51,82 @@
     .contact-link{background:#2563eb;color:#fff;border-radius:4px;padding:6px 12px;text-decoration:none;font-weight:500;display:block;width:max-content;margin:auto}
     .contact-link:hover{background:#1d4ed8}
     footer{text-align:center;padding:30px 10px;color:#6b7280;font-size:.9em;border-top:1px solid #e5e7eb;margin-top:60px}
+    /* --- Responsive table fix --- */
+
+/* Bọc bảng để có thể cuộn ngang trên màn hình nhỏ */
+.table-wrap{
+  width:100%;
+  overflow-x:auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Đặt min-width để cột không bị ép quá hẹp trên mobile */
+.service-table{
+  width:100%;
+  border-collapse:collapse;
+  margin-bottom:48px;
+  table-layout:fixed;
+  min-width:720px; /* đảm bảo cột giá không bị gãy dòng */
+}
+
+/* Căn số theo cột, dùng tabular-nums để thẳng hàng */
+.service-table th,.service-table td{
+  padding:12px;
+  border-bottom:1px solid #e5e7eb;
+  word-wrap:break-word;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings:"tnum" 1,"lnum" 1;
+}
+
+/* Header giữ không xuống dòng (tránh "Bảo hành" bị dọc) */
+.service-table th{
+  background:#f3f4f6;
+  font-weight:600;
+  white-space:nowrap;
+}
+
+/* Cột tên dịch vụ: dùng flex để logo + chữ luôn nằm ngang */
+.service-table td:first-child{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  white-space:normal;     /* cho phép xuống dòng nếu cần */
+}
+
+/* Cột 1/3/6/12 tháng: canh phải + độ rộng ổn định */
+.service-table th:nth-child(2), .service-table td:nth-child(2),
+.service-table th:nth-child(3), .service-table td:nth-child(3),
+.service-table th:nth-child(4), .service-table td:nth-child(4),
+.service-table th:nth-child(5), .service-table td:nth-child(5){
+  text-align:right;
+  width:110px;
+}
+
+/* Bảo hành + Liên hệ: căn giữa */
+.service-table th:nth-child(6),.service-table th:nth-child(7),
+.service-table td:nth-child(6),.service-table td:nth-child(7){
+  text-align:center;
+}
+
+.logo{
+  flex:0 0 auto;
+  width:26px; height:26px;
+  object-fit:contain;
+}
+
+/* Mobile tweaks */
+@media (max-width: 600px){
+  .service-table{ min-width:640px; }
+  .service-table th,.service-table td{ padding:10px 8px; }
+  .logo{ width:20px; height:20px; }
+}
+.table-wrap {
+  overflow-x: auto;
+}
+.table-wrap table {
+  min-width: 800px;
+}
+
   </style>
 <script>
     function searchService(v){document.querySelectorAll('tbody tr').forEach(r=>r.style.display=r.textContent.toLowerCase().includes(v.toLowerCase())?'':'none');}
@@ -70,8 +150,9 @@
 <input class="search-bar" onkeyup="searchService(this.value)" placeholder="Tìm dịch vụ..."/>
 <div class="container">
 <!-- ================= GIẢI TRÍ ================= -->
-<div class="section-title" id="giai-tri">🎮 Giải trí</div>
-<table class="service-table">
+<div id="giai-tri" class="section-title">🎮 Giải trí</div>
+<div class="table-wrap">
+  <table class="service-table">
 <thead><tr><th>Dịch vụ             </th><th>1 tháng</th><th>3 tháng</th><th>6 tháng</th><th>12 tháng</th><th>Bảo hành</th><th>Liên hệ</th></tr></thead>
 <tbody>
 <tr><td><img class="logo" src="https://images-eds-ssl.xboxlive.com/image?url=4rt9.lXDC4H_93laV1_eHM0OYfiFeMI2p9MWie0CvL99U4GA1gf6_kayTt_kBblFwHwo8BW8JXlqfnYxKPmmBaQDG.nPeYqpMXSUQbV6ZbCfAgGEglUh6ueS3mUIUiau0EUU1V8MsddKniPbWSixp6gqP55hT_QSR0z.Meh1Z8s-&amp;format=source"/>CapCut Pro</td><td>80k</td><td>240k</td><td>480k</td><td>650k</td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&amp;locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
@@ -97,8 +178,9 @@
 </tbody>
 </table>
 <!-- ================= AI TOOLS ================= -->
-<div class="section-title" id="ai">🤖 AI Tools</div>
-<table class="service-table">
+<div id="ai" class="section-title">🤖 AI Tools</div>
+<div class="table-wrap">
+  <table class="service-table">
 <thead><tr><th>Dịch vụ</th><th>1 tháng</th><th>3 tháng</th><th>6 tháng</th><th>12 tháng</th><th>Bảo hành</th><th>Liên hệ</th></tr></thead>
 <tbody>
 <tr><td><img class="logo" src="https://chat.openai.com/favicon.ico"/>ChatGPT Pro</td><td>600k</td><td>1800k</td><td>3600k</td><td>7200k</td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&amp;locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
@@ -122,8 +204,9 @@
 </tbody>
 </table>
 <!-- ================= HỌC TẬP ================= -->
-<div class="section-title" id="hoc-tap">🎓 Học tập</div>
-<table class="service-table">
+<div id="hoc-tap" class="section-title">🎓 Học tập</div>
+<div class="table-wrap">
+  <table class="service-table">
 <thead><tr><th>Dịch vụ</th><th>1 tháng</th><th>3 tháng</th><th>6 tháng</th><th>12 tháng</th><th>Bảo hành</th><th>Liên hệ</th></tr></thead>
 <tbody>
 <tr><td><img class="logo" src="https://play-lh.googleusercontent.com/6Xe9DWiMC76daosOC80Im9gqe25Q9P55LxJIGPTLbcdFkMXOur4mk8jTVxoqOaiAvAG4"/>Grammarly</td><td>40k</td><td>120k</td><td>240k</td><td>350k</td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&amp;locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
