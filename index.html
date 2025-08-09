@@ -1,11 +1,12 @@
 <!DOCTYPE html>
+
 <html lang="vi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DT Shop</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DT Shop</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<style>
     body{margin:0;font-family:'Inter',sans-serif;background:#fff;color:#1f2937}
     header{background:linear-gradient(135deg,#3b82f6,#06b6d4);color:#fff;text-align:center;padding:32px 16px;border-bottom:4px solid #2563eb;box-shadow:0 4px 10px rgba(0,0,0,.1)}
     header h1{margin:0;font-size:2.25rem;text-transform:uppercase;letter-spacing:1px}
@@ -16,12 +17,30 @@
     .search-bar{display:block;margin:14px auto;padding:10px 14px;width:90%;max-width:420px;border:1px solid #d1d5db;border-radius:8px;font-size:1rem}
     .container{padding:20px;max-width:1200px;margin:auto}
     .section-title{font-size:1.5rem;margin:60px 0 18px;font-weight:700;color:#111827;border-bottom:3px solid #2563eb;display:inline-block;padding-bottom:6px}
+
     .service-table{width:100%;border-collapse:collapse;margin-bottom:48px;table-layout:fixed}
-    .service-table th,.service-table td{padding:12px;border-bottom:1px solid #e5e7eb;word-wrap:break-word}
+    .service-table th,.service-table td{
+      padding:12px;border-bottom:1px solid #e5e7eb;word-wrap:break-word;
+      font-variant-numeric: tabular-nums; font-feature-settings: "tnum" 1, "lnum" 1;
+    }
     .service-table th{background:#f3f4f6;font-weight:600}
+
+    /* Cột tên dịch vụ */
+    .service-table th:first-child,
+    .service-table td:first-child{ text-align:left; white-space:nowrap }
+
+    /* Cột giá 1/3/6/12 tháng */
+    .service-table th:nth-child(2), .service-table td:nth-child(2),
+    .service-table th:nth-child(3), .service-table td:nth-child(3),
+    .service-table th:nth-child(4), .service-table td:nth-child(4),
+    .service-table th:nth-child(5), .service-table td:nth-child(5){
+      text-align:right; width:110px;
+    }
+
+    /* Bảo hành + Liên hệ */
     .service-table th:nth-child(6),.service-table th:nth-child(7),
     .service-table td:nth-child(6),.service-table td:nth-child(7){text-align:center}
-    .service-table td:first-child{white-space:nowrap}
+
     .logo{width:26px;height:26px;margin-right:8px;vertical-align:middle;object-fit:contain}
     .tron-goi-label{background:#22c55e;color:#fff;border-radius:4px;padding:2px 6px;font-size:.85em;display:inline-block}
     td:has(> .tron-goi-label){background:#dcfce7;font-weight:600;text-align:center}
@@ -29,103 +48,100 @@
     .contact-link:hover{background:#1d4ed8}
     footer{text-align:center;padding:30px 10px;color:#6b7280;font-size:.9em;border-top:1px solid #e5e7eb;margin-top:60px}
   </style>
-  <script>
+<script>
     function searchService(v){document.querySelectorAll('tbody tr').forEach(r=>r.style.display=r.textContent.toLowerCase().includes(v.toLowerCase())?'':'none');}
   </script>
 </head>
 <body>
-  <header>
-    <h1>DT Shop</h1>
-    <p class="slogan">Nếu sản phẩm là miễn phí thì bạn <strong>đang</strong> là sản phẩm ⚠️</p>
-    <p>Dịch vụ tài khoản premium chính chủ & tài khoản cấp • Hotline: <strong>037 773 3703</strong></p>
-  </header>
-
-  <!-- Thứ tự: Giải trí -> AI Tools -> Học tập -->
-  <nav>
-    <a href="#giai-tri">Giải trí</a>
-    <a href="#ai">AI Tools</a>
-    <a href="#hoc-tap">Học tập</a>
-  </nav>
-
-  <input class="search-bar" placeholder="Tìm dịch vụ..." onkeyup="searchService(this.value)" />
-
-  <div class="container">
-    <!-- ================= GIẢI TRÍ ================= -->
-    <div id="giai-tri" class="section-title">🎮 Giải trí</div>
-    <table class="service-table">
-      <thead><tr><th>Dịch vụ</th><th>1 tháng</th><th>3 tháng</th><th>6 tháng</th><th>12 tháng</th><th>Bảo hành</th><th>Liên hệ</th></tr></thead>
-      <tbody>
-        <tr><td><img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg"/>Netflix 4K</td><td></td><td></td><td></td><td></td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
-        <tr><td><img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg"/>YouTube Premium</td><td></td><td></td><td></td><td></td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
-        <tr><td><img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/0/0f/Google_One_logo.svg"/>Google One</td><td></td><td></td><td></td><td></td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
-        <tr><td><img class="logo" src="https://open.spotify.com/favicon.ico"/>Spotify Individual</td><td></td><td></td><td></td><td></td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
-        <tr><td><img class="logo" src="https://open.spotify.com/favicon.ico"/>Spotify Farm</td><td></td><td></td><td></td><td></td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
-        <tr><td><img class="logo" src="https://www.disneyplus.com/favicon.ico"/>Disney+ Plus</td><td></td><td></td><td></td><td></td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
-        <tr><td><img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/1/17/HBO_Max_Logo.svg"/>HBO Max</td><td></td><td></td><td></td><td></td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
-        <tr><td><img class="logo" src="https://www.primevideo.com/favicon.ico"/>Amazon Prime Video</td><td></td><td></td><td></td><td></td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
-        <tr><td><img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/8/87/Crunchyroll_Logo.svg"/>Crunchyroll</td><td></td><td></td><td></td><td></td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
-        <tr><td><img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/3/35/Paramount_Plus_logo.svg"/>Paramount+ Premium</td><td></td><td></td><td></td><td></td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
-        <tr><td><img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/0/0a/SonyLIV_logo.svg"/>SonyLIV</td><td></td><td></td><td></td><td></td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
-        <tr><td><img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/6/69/Viki_Logo.svg"/>Viki Pass</td><td></td><td></td><td></td><td></td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
-        <tr><td><img class="logo" src="https://www.crave.ca/favicon.ico"/>Crave CA</td><td></td><td></td><td></td><td></td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
-        <tr><td><img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/0/02/Viu_logo.svg"/>Viu Premium</td><td></td><td></td><td></td><td></td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
-        <tr><td><img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/2/2e/Tidal_logo.svg"/>Tidal Hi-Fi</td><td></td><td></td><td></td><td></td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
-        <tr><td><img class="logo" src="https://vieon.vn/favicon.ico"/>VieON</td><td></td><td></td><td></td><td></td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
-        <tr><td><img class="logo" src="https://fptplay.vn/favicon.ico"/>FPT Play VIP</td><td></td><td></td><td></td><td></td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
-        <tr><td><img class="logo" src="https://kplus.vn/favicon.ico"/>K+ TV</td><td></td><td></td><td></td><td></td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
-        <tr><td><img class="logo" src="https://www.beinsports.com/favicon.ico"/>beIN Sports</td><td></td><td></td><td></td><td></td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
-        <tr><td><img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/5/59/CapCut_Logo.svg"/>CapCut Pro</td><td></td><td></td><td></td><td></td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
-      </tbody>
-    </table>
-
-    <!-- ================= AI TOOLS ================= -->
-    <div id="ai" class="section-title">🤖 AI Tools</div>
-    <table class="service-table">
-      <thead><tr><th>Dịch vụ</th><th>1 tháng</th><th>3 tháng</th><th>6 tháng</th><th>12 tháng</th><th>Bảo hành</th><th>Liên hệ</th></tr></thead>
-      <tbody>
-        <tr><td><img class="logo" src="https://chat.openai.com/favicon.ico"/>ChatGPT Pro</td><td></td><td></td><td></td><td></td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
-        <tr><td><img class="logo" src="https://chat.openai.com/favicon.ico"/>ChatGPT Plus</td><td></td><td></td><td></td><td></td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
-        <tr><td><img class="logo" src="https://claude.ai/favicon.ico"/>Claude AI</td><td></td><td></td><td></td><td></td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
-        <tr><td><img class="logo" src="https://midjourney.com/favicon.ico"/>Midjourney</td><td></td><td></td><td></td><td></td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
-        <tr><td><img class="logo" src="https://leonardo.ai/favicon.ico"/>Leonardo AI</td><td></td><td></td><td></td><td></td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
-        <tr><td><img class="logo" src="https://www.perplexity.ai/favicon.ico"/>Perplexity AI</td><td></td><td></td><td></td><td></td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
-        <tr><td><img class="logo" src="https://suno.com/favicon.ico"/>Suno.ai</td><td></td><td></td><td></td><td></td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
-        <tr><td><img class="logo" src="https://sider.ai/favicon.ico"/>Sider AI</td><td></td><td></td><td></td><td></td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
-        <tr><td><img class="logo" src="https://gamma.app/favicon.ico"/>Gamma AI</td><td></td><td></td><td></td><td></td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
-        <tr><td><img class="logo" src="https://elevenlabs.io/favicon.ico"/>ElevenLabs</td><td></td><td></td><td></td><td></td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
-        <tr><td><img class="logo" src="https://ideogram.ai/favicon.ico"/>Ideogram AI</td><td></td><td></td><td></td><td></td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
-        <tr><td><img class="logo" src="https://dora.run/favicon.ico"/>Dora.run</td><td></td><td></td><td></td><td></td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
-        <tr><td><img class="logo" src="https://www.cursor.com/favicon.ico"/>Cursor AI</td><td></td><td></td><td></td><td></td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
-        <tr><td><img class="logo" src="https://kling.ai/favicon.ico"/>Kling AI Standard</td><td></td><td></td><td></td><td></td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
-        <tr><td><img class="logo" src="https://kling.ai/favicon.ico"/>Kling AI Pro</td><td></td><td></td><td></td><td></td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
-        <tr><td><img class="logo" src="https://kling.ai/favicon.ico"/>Kling AI Premier</td><td></td><td></td><td></td><td></td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
-        <tr><td><img class="logo" src="https://notion.so/favicon.ico"/>Notion AI</td><td></td><td></td><td></td><td></td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
-        <tr><td><img class="logo" src="https://gemini.google.com/favicon.ico"/>Gemini Advanced</td><td></td><td></td><td></td><td></td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
-      </tbody>
-    </table>
-
-    <!-- ================= HỌC TẬP ================= -->
-    <div id="hoc-tap" class="section-title">🎓 Học tập</div>
-    <table class="service-table">
-      <thead><tr><th>Dịch vụ</th><th>1 tháng</th><th>3 tháng</th><th>6 tháng</th><th>12 tháng</th><th>Bảo hành</th><th>Liên hệ</th></tr></thead>
-      <tbody>
-        <tr><td><img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/5/5f/Grammarly_logo.png"/>Grammarly</td><td></td><td></td><td></td><td></td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
-        <tr><td><img class="logo" src="https://quillbot.com/favicon.ico"/>QuillBot</td><td></td><td></td><td></td><td></td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
-        <tr><td><img class="logo" src="https://www.turnitin.com/favicon.ico"/>Turnitin</td><td></td><td></td><td></td><td></td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
-        <tr><td><img class="logo" src="https://www.duolingo.com/favicon.ico"/>Duolingo Super</td><td></td><td></td><td></td><td></td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
-        <tr><td><img class="logo" src="https://www.coursera.org/favicon.ico"/>Coursera Plus</td><td></td><td></td><td></td><td></td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
-        <tr><td><img class="logo" src="https://quizlet.com/favicon.ico"/>Quizlet Plus</td><td></td><td></td><td></td><td></td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
-        <tr><td><img class="logo" src="https://kalodata.io/favicon.ico"/>Kalodata</td><td></td><td></td><td></td><td></td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
-        <tr><td><img class="logo" src="https://www.datacamp.com/favicon.ico"/>DataCamp</td><td></td><td></td><td></td><td></td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
-        <tr><td><img class="logo" src="https://elsaspeak.com/static/media/favicon.4c4c9fa8.ico"/>ELSA Premium</td><td></td><td></td><td></td><td></td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
-        <tr><td><img class="logo" src="https://www.khanacademy.org/favicon.ico"/>Khan Academy Plus</td><td></td><td></td><td></td><td></td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <footer>
-    <p>&copy; 2025 DT Shop. All rights reserved.</p>
-    <p>Mọi người cần sản phẩm khác hãy liên hệ để được hỗ trợ.</p>
-  </footer>
+<!-- (giữ nguyên phần thân như bạn đang có) -->
 </body>
 </html>
+<header>
+<h1>DT Shop</h1>
+<p class="slogan">Nếu sản phẩm là miễn phí thì bạn <strong>đang</strong> là sản phẩm ⚠️</p>
+<p>Dịch vụ tài khoản premium chính chủ &amp; tài khoản cấp • Hotline: <strong>037 773 3703</strong></p>
+</header>
+<!-- Thứ tự: Giải trí -> AI Tools -> Học tập -->
+<nav>
+<a href="#giai-tri">Giải trí</a>
+<a href="#ai">AI Tools</a>
+<a href="#hoc-tap">Học tập</a>
+</nav>
+<input class="search-bar" onkeyup="searchService(this.value)" placeholder="Tìm dịch vụ..."/>
+<div class="container">
+<!-- ================= GIẢI TRÍ ================= -->
+<div class="section-title" id="giai-tri">🎮 Giải trí</div>
+<table class="service-table">
+<thead><tr><th>Dịch vụ             </th><th>1 tháng</th><th>3 tháng</th><th>6 tháng</th><th>12 tháng</th><th>Bảo hành</th><th>Liên hệ</th></tr></thead>
+<tbody>
+<tr><td><img class="logo" src="https://images-eds-ssl.xboxlive.com/image?url=4rt9.lXDC4H_93laV1_eHM0OYfiFeMI2p9MWie0CvL99U4GA1gf6_kayTt_kBblFwHwo8BW8JXlqfnYxKPmmBaQDG.nPeYqpMXSUQbV6ZbCfAgGEglUh6ueS3mUIUiau0EUU1V8MsddKniPbWSixp6gqP55hT_QSR0z.Meh1Z8s-&amp;format=source"/>CapCut Pro</td><td>80k</td><td>240k</td><td>480k</td><td>650k</td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&amp;locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
+<tr><td><img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg"/>Netflix 4K Ultra HD</td><td>100k</td><td>300k</td><td>600k</td><td>1200k</td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&amp;locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
+<tr><td><img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg"/>YouTube Premium</td><td>60k</td><td>180k</td><td>280k</td><td>500k</td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&amp;locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
+<tr><td><img class="logo" src="https://shop.aedigi.com/wp-content/uploads/Goole-One-logo.png"/>Google One</td><td>Liên Hệ</td><td>Liên Hệ</td><td>Liên Hệ</td><td>Liên Hệ</td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&amp;locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
+<tr><td><img class="logo" src="https://open.spotify.com/favicon.ico"/>Spotify Individual</td><td>50k</td><td>150k</td><td>300k</td><td>700k</td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&amp;locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
+<tr><td><img class="logo" src="https://open.spotify.com/favicon.ico"/>Spotify Family</td><td>30k</td><td>90k</td><td>170k</td><td>250k</td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&amp;locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
+<tr><td><img class="logo" src="https://fptplay.vn/favicon.ico"/>FPT Play VIP</td><td>90k</td><td>200k</td><td>330k</td><td>530k</td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&amp;locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
+<tr><td><img class="logo" src="https://vieon.vn/favicon.ico"/>VieON</td><td>50k</td><td>110k</td><td>150k</td><td>200k</td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&amp;locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
+<tr><td><img class="logo" src="https://play-lh.googleusercontent.com/fJTUqCUHNA5bCW_i588WR4J5O8IYVXlGVrXEkFd4eRsXImEAsG7bnZKc57oNi1xz8Kg"/>K+ TV</td><td>300k</td><td>400k</td><td>650k</td><td>1000k</td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&amp;locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
+<tr><td><img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/6/64/Disney%2B_2024.svg"/>Disney+ Plus</td><td>Liên hệ</td><td>Liên hệ</td><td>Liên hệ</td><td>Liên hệ</td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&amp;locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
+<tr><td><img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/1/17/HBO_Max_Logo.svg"/>HBO Max</td><td>Liên hệ</td><td>Liên hệ</td><td>Liên hệ</td><td>Liên hệ</td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&amp;locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
+<tr><td><img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Amazon_Prime_Video_logo.svg/800px-Amazon_Prime_Video_logo.svg.png"/>Amazon Prime Video</td><td>Liên hệ</td><td>Liên hệ</td><td>Liên hệ</td><td>Liên hệ</td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&amp;locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
+<tr><td><img class="logo" src="https://i.ytimg.com/vi/Br4pWiuisVo/hqdefault.jpg"/>Crunchyroll</td><td>Liên hệ</td><td>Liên hệ</td><td>Liên hệ</td><td>Liên hệ</td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&amp;locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
+<tr><td><img class="logo" src="https://sadesign.vn/pictures/picfullsizes/2024/08/26/kir1724689210.jpg"/>Paramount+ Premium</td><td>Liên hệ</td><td>Liên hệ</td><td>Liên hệ</td><td>Liên hệ</td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&amp;locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
+<tr><td><img class="logo" src="https://play-lh.googleusercontent.com/_FGpN1UYjPgfL1t3TSybSllUdlzoLTUlLx36UUUpPm8W3-w37SNd1ZNfJbwKzwPyJ3w"/>SonyLIV</td><td>Liên hệ</td><td>Liên hệ</td><td>Liên hệ</td><td>Liên hệ</td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&amp;locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
+<tr><td><img class="logo" src="https://sadesign.vn/pictures/picfullsizes/2024/08/27/sur1724743271.jpg"/>Viki Pass</td><td>Liên hệ</td><td>Liên hệ</td><td>Liên hệ</td><td>Liên hệ</td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&amp;locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
+<tr><td><img class="logo" src="https://play-lh.googleusercontent.com/X4c-IrRgJx1WAf2Zfr8T-HOYS6mbTrttCt8eJ9MJzRlr6AIFvky6sOruDkTst6Zz_Q"/>Crave CA</td><td>Liên hệ</td><td>Liên hệ</td><td>Liên hệ</td><td>Liên hệ</td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&amp;locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
+<tr><td><img class="logo" src="https://play-lh.googleusercontent.com/qUBOlpmISAJAhgFQqjnCU27tm0sUDdj6vjdYpJ6vBi2e65gh7n0oWCivWuUasAmKga7s"/>Viu Premium</td><td>Liên hệ</td><td>Liên hệ</td><td>Liên hệ</td><td>Liên hệ</td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&amp;locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
+<tr><td><img class="logo" src="https://pdbimg.choice.com.au/tidal-hifi_1.jpg"/>Tidal Hi-Fi</td><td>Liên hệ</td><td>Liên hệ</td><td>Liên hệ</td><td>Liên hệ</td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&amp;locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
+<tr><td><img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/2/20/Bein_sport_logo.png"/>beIN Sports</td><td>Liên hệ</td><td>Liên hệ</td><td>Liên hệ</td><td>Liên hệ</td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&amp;locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
+</tbody>
+</table>
+<!-- ================= AI TOOLS ================= -->
+<div class="section-title" id="ai">🤖 AI Tools</div>
+<table class="service-table">
+<thead><tr><th>Dịch vụ</th><th>1 tháng</th><th>3 tháng</th><th>6 tháng</th><th>12 tháng</th><th>Bảo hành</th><th>Liên hệ</th></tr></thead>
+<tbody>
+<tr><td><img class="logo" src="https://chat.openai.com/favicon.ico"/>ChatGPT Pro</td><td>600k</td><td>1800k</td><td>3600k</td><td>7200k</td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&amp;locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
+<tr><td><img class="logo" src="https://chat.openai.com/favicon.ico"/>ChatGPT Plus</td><td>130k</td><td>390k</td><td>780k</td><td>1560k</td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&amp;locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
+<tr><td><img class="logo" src="https://claude.ai/favicon.ico"/>Claude AI</td><td>Liên hệ</td><td>Liên hệ</td><td>Liên hệ</td><td>Liên hệ</td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&amp;locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
+<tr><td><img class="logo" src="https://cdn2.fptshop.com.vn/unsafe/1920x0/filters:format(webp):quality(75)/google_xac_nhan_gemini_se_co_mat_tren_xe_hoi_va_dong_ho_thong_minh_wear_os_e3ef4d9523.jpg"/>Gemini Premium</td><td>90k</td><td>270k</td><td>540k</td><td>870k</td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&amp;locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
+<tr><td><img class="logo" src="https://accesstrade.vn/wp-content/uploads/2024/03/Midjourney-ai-la-gi.jpeg"/>Midjourney</td><td>Liên hệ</td><td>Liên hệ</td><td>Liên hệ</td><td>Liên hệ</td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&amp;locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
+<tr><td><img class="logo" src="https://leonardo.ai/favicon.ico"/>Leonardo AI</td><td>Liên hệ</td><td>Liên hệ</td><td>Liên hệ</td><td>Liên hệ</td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&amp;locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
+<tr><td><img class="logo" src="https://www.perplexity.ai/favicon.ico"/>Perplexity AI</td><td>Liên hệ</td><td>Liên hệ</td><td>Liên hệ</td><td>Liên hệ</td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&amp;locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
+<tr><td><img class="logo" src="https://suno.com/favicon.ico"/>Suno.ai</td><td>Liên hệ</td><td>Liên hệ</td><td>Liên hệ</td><td>Liên hệ</td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&amp;locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
+<tr><td><img class="logo" src="https://play-lh.googleusercontent.com/VghuZRn0-oLvbaGqptsM-9Qr6Ka7Pmw7lfmu6_UQ56mZS6bsXbET9Uf0wF0FECP8lEM=w240-h480-rw"/>Sider AI</td><td>Liên hệ</td><td>Liên hệ</td><td>Liên hệ</td><td>Liên hệ</td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&amp;locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
+<tr><td><img class="logo" src="https://gamma.app/favicon.ico"/>Gamma AI</td><td>Liên hệ</td><td>Liên hệ</td><td>Liên hệ</td><td>Liên hệ</td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&amp;locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
+<tr><td><img class="logo" src="https://elevenlabs.io/favicon.ico"/>ElevenLabs</td><td>Liên hệ</td><td>Liên hệ</td><td>Liên hệ</td><td>Liên hệ</td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&amp;locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
+<tr><td><img class="logo" src="https://ideogram.ai/favicon.ico"/>Ideogram AI</td><td>Liên hệ</td><td>Liên hệ</td><td>Liên hệ</td><td>Liên hệ</td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&amp;locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
+<tr><td><img class="logo" src="https://dora.run/favicon.ico"/>Dora.run</td><td>Liên hệ</td><td>Liên hệ</td><td>Liên hệ</td><td>Liên hệ</td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&amp;locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
+<tr><td><img class="logo" src="https://www.cursor.com/favicon.ico"/>Cursor AI</td><td>Liên hệ</td><td>Liên hệ</td><td>Liên hệ</td><td>Liên hệ</td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&amp;locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
+<tr><td><img class="logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqC_0NQHd5Z61aQRQYxoiKuc6mH_pUlmLVUA&amp;s"/>Kling AI Standard</td><td>Liên hệ</td><td>Liên hệ</td><td>Liên hệ</td><td>Liên hệ</td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&amp;locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
+<tr><td><img class="logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqC_0NQHd5Z61aQRQYxoiKuc6mH_pUlmLVUA&amp;s"/>Kling AI Pro</td><td>Liên hệ</td><td>Liên hệ</td><td>Liên hệ</td><td>Liên hệ</td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&amp;locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
+<tr><td><img class="logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqC_0NQHd5Z61aQRQYxoiKuc6mH_pUlmLVUA&amp;s"/>Kling AI Premier</td><td>Liên hệ</td><td>Liên hệ</td><td>Liên hệ</td><td>Liên hệ</td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&amp;locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
+<tr><td><img class="logo" src="https://cdn.prod.website-files.com/61200c626272ab199785ccd6/6686f65022406959cb47ee9e_notion-ai-1.webp"/>Notion AI</td><td>Liên hệ</td><td>Liên hệ</td><td>Liên hệ</td><td>Liên hệ</td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&amp;locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
+</tbody>
+</table>
+<!-- ================= HỌC TẬP ================= -->
+<div class="section-title" id="hoc-tap">🎓 Học tập</div>
+<table class="service-table">
+<thead><tr><th>Dịch vụ</th><th>1 tháng</th><th>3 tháng</th><th>6 tháng</th><th>12 tháng</th><th>Bảo hành</th><th>Liên hệ</th></tr></thead>
+<tbody>
+<tr><td><img class="logo" src="https://play-lh.googleusercontent.com/6Xe9DWiMC76daosOC80Im9gqe25Q9P55LxJIGPTLbcdFkMXOur4mk8jTVxoqOaiAvAG4"/>Grammarly</td><td>40k</td><td>120k</td><td>240k</td><td>350k</td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&amp;locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
+<tr><td><img class="logo" src="https://quizlet.com/favicon.ico"/>Quizlet Plus</td><td>40k</td><td>120k</td><td>240k</td><td>350k</td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&amp;locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
+<tr><td><img class="logo" src="https://quillbot.com/favicon.ico"/>QuillBot</td><td>Liên hệ</td><td>Liên hệ</td><td>Liên hệ</td><td>Liên hệ</td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&amp;locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
+<tr><td><img class="logo" src="https://centrix.software/wp-content/uploads/tai-khoan-elsa.jpg"/>ELSA Pro</td><td>50k</td><td>150k</td><td>300k</td><td>450k</td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&amp;locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
+<tr><td><img class="logo" src="https://www.turnitin.com/favicon.ico"/>Turnitin</td><td>Liên hệ</td><td>Liên hệ</td><td>Liên hệ</td><td>Liên hệ</td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&amp;locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
+<tr><td><img class="logo" src="https://hoctiengtrungmienphi.com/wp-content/uploads/2025/02/duolingo-super-3.jpg"/>Duolingo Super</td><td>30k</td><td>90k</td><td>180k</td><td>270k</td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&amp;locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
+<tr><td><img class="logo" src="https://www.coursera.org/favicon.ico"/>Coursera Plus</td><td>Liên hệ</td><td>Liên hệ</td><td>Liên hệ</td><td>Liên hệ</td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&amp;locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
+<tr><td><img class="logo" src="https://play-lh.googleusercontent.com/4M6qps6qr4HMgQFqVaE_r1PDZQgsvdLHUUaOVCaRpjc2TXAwJFOh2LVro1q2yig00hY"/>Kalodata</td><td>Liên hệ</td><td>Liên hệ</td><td>Liên hệ</td><td>Liên hệ</td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&amp;locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
+<tr><td><img class="logo" src="https://play-lh.googleusercontent.com/2menhwShF67fUQBiKbqgXs49QT1M750gTGSnwr_CblafB1pfs5NNDOJZIry_q7Fj8Rw"/>DataCamp</td><td>Liên hệ</td><td>Liên hệ</td><td>Liên hệ</td><td>Liên hệ</td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&amp;locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
+<tr><td><img class="logo" src="https://www.khanacademy.org/favicon.ico"/>Khan Academy Plus</td><td>Liên hệ</td><td>Liên hệ</td><td>Liên hệ</td><td>Liên hệ</td><td><span class="tron-goi-label">Trọn gói</span></td><td><a class="contact-link" href="https://www.facebook.com/profile.php?id=100087735727317&amp;locale=vi_VN" target="_blank">Liên hệ</a></td></tr>
+</tbody>
+</table>
+</div>
+<footer>
+<p>© 2025 DT Shop. All rights reserved.</p>
+<p>Mọi người cần sản phẩm khác hãy liên hệ để được hỗ trợ.</p>
+</footer>
+
+
